@@ -4,6 +4,7 @@ ARG NODE_VERSION
 ENV NODE_VERSION=$NODE_VERSION HOME=/root DOCKER_HOST=tcp://docker:2375
 WORKDIR /root
 
-RUN apk add --no-cache --update bash tar zip git docker
+# make node-gyp works
+RUN apk add --no-cache --update python make g++
 
 # EOF
