@@ -25,10 +25,6 @@ install:
 script:
   - docker version
   - docker info
-  - docker build -t node-alpine-prebuild --build-arg NODE_VERSION=$NODE_VERSION alpine-prebuild
-  - export CID=$(docker create node-alpine-prebuild)
-  - mkdir -p alpine/usr/bin
-  - docker cp $CID:/usr/bin/node alpine/usr/bin
 
 after_success:
   - export REPO=$TRAVIS_REPO_SLUG
