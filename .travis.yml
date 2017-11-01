@@ -5,6 +5,12 @@ notifications:
     on_success: never
     on_failure: change
 
+before_install:
+  - export LATEST_VERSION=$(wget -qO- https://nodejs.org/dist/latest/ | sed -nE 's|.*>node-v(.*)\.pkg</a>.*|\1|p')
+  - echo $LATEST_VERSION
+  - export NODE_VERSION=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo $LATEST_VERSION; else echo $TRAVIS_BRANCH ; fi`
+  - echo $NODE_VERSION
+
 install:
   - sudo curl -sSL https://get.docker.com/ | sh
 #  - sudo rm /usr/local/bin/docker-compose
@@ -16,10 +22,8 @@ install:
 #  - docker-compose version
 
 script:
-  - export LATEST_VERSION=$(wget -qO- https://nodejs.org/dist/latest/ | sed -nE 's|.*>node-v(.*)\.pkg</a>.*|\1|p')
-  - echo $LATEST_VERSION
-  - export NODE_VERSION=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo $LATEST_VERSION; else echo $TRAVIS_BRANCH ; fi`
-  - echo $NODE_VERSION
+  - docker version
+  - docker info
 
 after_success:
   - export REPO=$TRAVIS_REPO_SLUG
