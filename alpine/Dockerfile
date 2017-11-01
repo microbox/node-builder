@@ -4,6 +4,8 @@ ARG NODE_VERSION
 ENV NODE_VERSION=${NODE_VERSION}
 RUN apk add --no-cache --update ca-certificates nodejs-npm python make g++ git tar zip docker && \
     rm -rf /usr/share/man /tmp/* /var/cache/apk/*
+ENV HOME=/root
+WORKDIR /root
 
 # for upstream image run as user
 # RUN adduser -u 1000 -g node -h /home/node -s /bin/sh -D node
