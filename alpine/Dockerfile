@@ -4,7 +4,7 @@ ARG NODE_VERSION
 ENV NODE_VERSION=${NODE_VERSION}
 ENV HOME=/root DOCKER_HOST=tcp://docker:2375
 WORKDIR /root
-RUN apk add --no-cache --update ca-certificates nodejs-npm python make g++ git tar zip docker && \
+RUN apk add --no-cache --update ca-certificates nodejs-npm python make g++ git tar zip docker bash && \
     npm install -g yarn && \
     rm -rf /usr/share/man /tmp/* /var/cache/apk/* /root/.npm
 
