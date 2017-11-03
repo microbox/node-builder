@@ -8,6 +8,8 @@ RUN apk add --no-cache --update ca-certificates nodejs-npm python make g++ git t
     npm install -g yarn && \
     rm -rf /usr/share/man /tmp/* /var/cache/apk/* /root/.npm
 
+CMD /bin/bash
+
 # for upstream image run as user
 # RUN adduser -u 1000 -g node -h /home/node -s /bin/sh -D node
 # USER node
