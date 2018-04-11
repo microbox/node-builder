@@ -7,5 +7,5 @@ WORKDIR /root
 
 # make node-gyp works
 RUN apk add --no-cache --update python make g++ git tar zip docker nodejs>=${NODE_VERSION} nodejs-npm>=>=${NODE_VERSION}
-
+RUN npm install -g yarn
 # EOF
